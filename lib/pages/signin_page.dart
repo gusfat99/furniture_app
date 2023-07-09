@@ -40,9 +40,10 @@ class _SigninPageState extends State<SigninPage> {
         fToast.showToast(
             child: ToastContainer(
                 type: 'success',
-                message: 'awesome, you have sucessfully loged in!'),
+                message: 'awesome, you have sucessfully loged!'),
             toastDuration: Duration(seconds: 3),
             gravity: ToastGravity.BOTTOM);
+        Navigator.pushNamed(context, '/home');
       } else {
         fToast.showToast(
             child: ToastContainer(

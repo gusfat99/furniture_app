@@ -8,6 +8,7 @@ class TextInput extends StatelessWidget {
   final bool autoFocus;
   final Widget? adornmentRight;
   final TextEditingController controller;
+  final Color color;
 
   TextInput(
       {super.key,
@@ -16,6 +17,7 @@ class TextInput extends StatelessWidget {
       required this.controller,
       this.obscureText = false,
       this.autoFocus = false,
+      this.color = kWhiteGreyColor,
       this.adornmentRight});
 
   @override
@@ -41,7 +43,7 @@ class TextInput extends StatelessWidget {
         margin: margin,
         padding: EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: kWhiteGreyColor,
+          color: color,
           borderRadius: BorderRadius.circular(14),
         ),
         child: Row(

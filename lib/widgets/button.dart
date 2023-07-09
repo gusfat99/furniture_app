@@ -43,6 +43,9 @@ class Button extends StatelessWidget {
           }
         },
         style: TextButton.styleFrom(
+            minimumSize: Size(50, 30),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            alignment: Alignment.center,
             padding: EdgeInsets.all(0),
             backgroundColor: variant == "text" ? kWhiteColor : kColors[color],
             shape: RoundedRectangleBorder(
