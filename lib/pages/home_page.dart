@@ -3,7 +3,6 @@ import 'package:space/theme.dart';
 import 'package:space/widgets/category_section.dart';
 import 'package:space/widgets/header_home.dart';
 import 'package:space/widgets/textInput.dart';
-import 'package:space/widgets/title_section.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});

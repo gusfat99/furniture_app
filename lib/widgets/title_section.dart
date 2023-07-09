@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:space/theme.dart';
-import 'package:space/widgets/button.dart';
 
 class TitleSection extends StatelessWidget {
   final String title;
