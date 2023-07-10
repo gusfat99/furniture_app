@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:space/theme.dart';
 import 'package:space/widgets/category_section.dart';
 import 'package:space/widgets/header_home.dart';
+import 'package:space/widgets/populer_section.dart';
 import 'package:space/widgets/textInput.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,33 +72,38 @@ class _HomePageState extends State<HomePage> {
           Image.asset('assets/image_background.png'),
           SafeArea(
             child: Container(
-              padding: EdgeInsets.all(24),
-              child: Column(
+              padding: EdgeInsets.only(top: 24),
+              child: ListView(
                 children: [
-                  HeaderHome(
-                    margin: EdgeInsets.only(bottom: 30),
-                  ),
-                  TextInput(
-                      hintText: 'Search Furniture',
-                      color: kWhiteColor,
-                      controller: searchController,
-                      adornmentRight: Container(
-                        padding: EdgeInsets.zero,
-                        height: 18,
-                        width: 18,
-                        child: IconButton(
+                  const HeaderHome(margin: EdgeInsets.fromLTRB(24, 0, 24, 30)),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 24),
+                    child: TextInput(
+                        hintText: 'Search Furniture',
+                        color: kWhiteColor,
+                        controller: searchController,
+                        adornmentRight: Container(
                           padding: EdgeInsets.zero,
-                          icon: Image.asset(
-                            'assets/icon_search.png',
-                            width: 18.0,
+                          height: 18,
+                          width: 18,
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Image.asset(
+                              'assets/icon_search.png',
+                              width: 18.0,
+                            ),
+                            onPressed: () {},
                           ),
-                          onPressed: () {},
-                        ),
-                      )),
+                        )),
+                  ),
                   CategorySection(
-                      margin: EdgeInsets.only(top: 30),
+                      margin: const EdgeInsets.fromLTRB(24, 30, 24, 0),
                       onPressedShowAll: () {},
-                      carouselItem: categoryItems)
+                      carouselItem: categoryItems),
+                  PopulerSection(
+                    margin: const EdgeInsets.only(top: 24.7),
+                    onPressedShowAll: () {},
+                  )
                 ],
               ),
             ),

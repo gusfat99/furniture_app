@@ -4,7 +4,12 @@ import 'package:space/theme.dart';
 class TitleSection extends StatelessWidget {
   final String title;
   final VoidCallback onPress;
-  const TitleSection({super.key, required this.title, required this.onPress});
+  final double fontSizeTitle;
+  const TitleSection(
+      {super.key,
+      required this.title,
+      required this.onPress,
+      this.fontSizeTitle = 20.0});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,8 @@ class TitleSection extends StatelessWidget {
       children: [
         Text(
           title,
-          style: blackTextStyle.copyWith(fontSize: 20, fontWeight: semiBold),
+          style: blackTextStyle.copyWith(
+              fontSize: fontSizeTitle, fontWeight: semiBold),
         ),
         Container(
           padding: EdgeInsets.zero,
