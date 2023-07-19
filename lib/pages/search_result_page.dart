@@ -54,7 +54,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
         isLoading = true;
       });
 
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         var productFiltered = productsData
             .where((el) => el.title.toLowerCase().contains(val.toLowerCase()))
             .toList();
@@ -83,7 +83,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                   keyword = '';
                 });
               }
-              handeSearch(val ?? '');
+              handeSearch(val);
             },
             defaultValue: keyword,
           ),
