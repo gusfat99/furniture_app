@@ -79,6 +79,12 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 24),
                     child: TextInput(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/search');
+                        },
+                        onChanged: (value) {
+                          Navigator.pushNamed(context, '/search');
+                        },
                         hintText: 'Search Furniture',
                         color: kWhiteColor,
                         controller: searchController,
@@ -92,7 +98,9 @@ class _HomePageState extends State<HomePage> {
                               'assets/icon_search.png',
                               width: 18.0,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/search');
+                            },
                           ),
                         )),
                   ),

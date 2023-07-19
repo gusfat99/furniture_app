@@ -9,6 +9,9 @@ class TextInput extends StatelessWidget {
   final Widget? adornmentRight;
   final TextEditingController controller;
   final Color color;
+  final VoidCallback onTap;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onFieldSubmitted;
 
   TextInput(
       {super.key,
@@ -18,16 +21,24 @@ class TextInput extends StatelessWidget {
       this.obscureText = false,
       this.autoFocus = false,
       this.color = kWhiteGreyColor,
+      this.onTap = _defaultFunction,
+      this.onChanged,
+      this.onFieldSubmitted,
       this.adornmentRight});
+
+  static _defaultFunction() {}
 
   @override
   Widget build(BuildContext context) {
     List<Widget> childOfTextField = [
       Expanded(
         child: TextFormField(
+         
           controller: controller,
           obscureText: obscureText,
           autofocus: autoFocus,
+          onChanged: onChanged,
+          onFieldSubmitted: onFieldSubmitted,
           decoration: InputDecoration.collapsed(
               hintText: hintText,
               hintStyle: greyTextStyle.copyWith(fontSize: 14)),
@@ -39,15 +50,18 @@ class TextInput extends StatelessWidget {
       childOfTextField.add(adornmentRight!);
     }
 
-    return Container(
-        margin: margin,
-        padding: EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: Row(
-          children: childOfTextField.toList(),
-        ));
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          margin: margin,
+          padding: EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Row(
+            children: childOfTextField.toList(),
+          )),
+    );
   }
 }
