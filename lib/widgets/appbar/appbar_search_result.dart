@@ -19,7 +19,7 @@ class AppBarSearchResult extends StatefulWidget {
 
 class _AppBarSearchResultState extends State<AppBarSearchResult> {
   final _searchController = TextEditingController(text: '');
-  final debouncer = Debouncer(seconds: 2);
+  final debouncer = Debouncer(seconds: 1);
 
   void handleChanged(val) {
     debouncer.run(() => widget.onSearch(_searchController.text));

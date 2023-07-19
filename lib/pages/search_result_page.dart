@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:space/data/products.dart';
+import 'package:space/models/product_item.dart';
 import 'package:space/theme.dart';
 import 'package:space/widgets/appbar/appbar_search_result.dart';
 import 'package:space/widgets/product_grid_item.dart';
+import 'package:space/widgets/product_grid_skeleton.dart';
 import 'package:space/widgets/product_list_item.dart';
 
 class SearchResultPage extends StatefulWidget {
@@ -15,7 +17,30 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchResultPage> {
   late Map arguments;
   late String keyword = '';
-  late bool isGridView = true;
+  bool isGridView = true;
+  bool isLoading = false;
+  late List<ProductItem> products = [];
+
+  @override
+  void initState() {
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(Duration(seconds: 2), () {
+      var productFiltered = productsData
+          .where((el) => el.title
+              .toLowerCase()
+              .contains(arguments['keyword'].toLowerCase()))
+          .toList();
+
+      setState(() {
+        products = productFiltered;
+        isLoading = false;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +48,23 @@ class _SearchResultPageState extends State<SearchResultPage> {
         <String, dynamic>{}) as Map;
 
     keyword = !keyword.isEmpty ? keyword : arguments['keyword'];
+
+    void handeSearch(val) {
+      setState(() {
+        isLoading = true;
+      });
+
+      Future.delayed(Duration(seconds: 2), () {
+        var productFiltered = productsData
+            .where((el) => el.title.toLowerCase().contains(val.toLowerCase()))
+            .toList();
+
+        setState(() {
+          products = productFiltered;
+          isLoading = false;
+        });
+      });
+    }
 
     return DefaultTabController(
       length: 4,
@@ -41,6 +83,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                   keyword = '';
                 });
               }
+              handeSearch(val ?? '');
             },
             defaultValue: keyword,
           ),
@@ -90,7 +133,9 @@ class _SearchResultPageState extends State<SearchResultPage> {
         SizedBox(
           height: 20.0,
         ),
-        isGridView ? buildGridView() : buildListView(),
+        isLoading
+            ? buildLoadingView()
+            : (isGridView ? buildGridView() : buildListView()),
         SizedBox(
           height: 20.0,
         ),
@@ -99,10 +144,6 @@ class _SearchResultPageState extends State<SearchResultPage> {
   }
 
   Widget buildGridView() {
-    var products = productsData
-        .where((el) => el.title.toLowerCase().contains(keyword.toLowerCase()))
-        .toList();
-
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 18,
@@ -118,15 +159,19 @@ class _SearchResultPageState extends State<SearchResultPage> {
     );
   }
 
-  Widget buildListView() {
-    var products = productsData
-        .where((el) => el.title.toLowerCase().contains(keyword.toLowerCase()))
-        .toList();
-
+  Widget buildLoadingView() {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 18,
       runSpacing: 18,
+      children: List<int>.filled(4, 0, growable: true)
+          .map((_) => ProductGridSkeleton())
+          .toList(),
+    );
+  }
+
+  Widget buildListView() {
+    return Column(
       children: products
           .map((item) => ProductListItem(
                 imageUrl: item.imageUrl,
