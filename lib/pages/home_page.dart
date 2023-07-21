@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space/theme.dart';
+import 'package:space/widgets/category_card_item.dart';
 import 'package:space/widgets/category_section.dart';
 import 'package:space/widgets/header_home.dart';
 import 'package:space/widgets/populer_section.dart';
@@ -104,14 +105,18 @@ class _HomePageState extends State<HomePage> {
                           ),
                         )),
                   ),
+                  
                   CategorySection(
                       margin: const EdgeInsets.fromLTRB(24, 30, 24, 0),
-                      onPressedShowAll: () {},
+                      onPressedShowAll: () {
+                        Navigator.pushNamed(context, '/category');
+                      },
                       carouselItem: categoryItems),
                   PopulerSection(
                     margin: const EdgeInsets.only(top: 24.7),
                     onPressedShowAll: () {},
-                  )
+                  ),
+                 
                 ],
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:space/models/product_item.dart';
 
 List<ProductItem> productsData = [
   const ProductItem(
+    id: 1,
     imageUrl: 'assets/image_product_list1.png',
     imageGridUrl: 'assets/image_product_grid1.png',
     title: 'Poan Chair',
@@ -10,6 +11,7 @@ List<ProductItem> productsData = [
     isRecomend: true,
   ),
   const ProductItem(
+      id: 2,
       imageUrl: 'assets/image_product_list2.png',
       imageGridUrl: 'assets/image_product_grid2.png',
       title: 'Poan Maharani',
@@ -17,6 +19,7 @@ List<ProductItem> productsData = [
       isRecomend: true,
       price: '\$32'),
   const ProductItem(
+      id: 3,
       imageUrl: 'assets/image_product_list3.png',
       imageGridUrl: 'assets/image_product_grid3.png',
       title: 'Chair',
@@ -24,6 +27,7 @@ List<ProductItem> productsData = [
       isRecomend: true,
       price: '\$32'),
   const ProductItem(
+      id: 4,
       imageUrl: 'assets/image_product_list4.png',
       imageGridUrl: 'assets/image_product_grid4.png',
       title: 'Chair Maharani',
@@ -31,6 +35,7 @@ List<ProductItem> productsData = [
       isRecomend: false,
       price: '\$31'),
   const ProductItem(
+      id: 5,
       imageUrl: 'assets/image_product_list4.png',
       imageGridUrl: 'assets/image_product_grid4.png',
       title: 'Old Chair',
@@ -38,10 +43,19 @@ List<ProductItem> productsData = [
       isRecomend: false,
       price: '\$31'),
   const ProductItem(
+      id: 4,
       imageUrl: 'assets/image_product_list4.png',
       imageGridUrl: 'assets/image_product_grid4.png',
       title: 'Poan Table',
       isRecomend: true,
       category: 'table',
       price: '\$30'),
+  const ProductItem(
+      id: 3,
+      imageUrl: 'assets/image_product_list3.png',
+      imageGridUrl: 'assets/image_product_grid3.png',
+      title: 'Table Maharani',
+      category: 'Table',
+      isRecomend: false,
+      price: '\$29.1'),
 ];

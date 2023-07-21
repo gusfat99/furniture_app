@@ -38,12 +38,16 @@ class _CategorySectionState extends State<CategorySection> {
                         category: item['category'],
                         title: item['title'],
                         imageUrl: item['imageUrl'],
+                        onTap: () {
+                          Navigator.pushNamed(context, '/category',
+                              arguments: {'category': item['category']});
+                        },
                       ))
                   .toList(),
               options: CarouselOptions(
                   enableInfiniteScroll: false,
                   autoPlay: true,
-                  height: 140,
+                  height: 125,
                   viewportFraction: 1,
                   initialPage: carouselIndex,
                   onPageChanged: (index, reason) {

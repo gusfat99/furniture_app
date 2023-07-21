@@ -25,7 +25,7 @@ class TitleSection extends StatelessWidget {
         Container(
           padding: EdgeInsets.zero,
           child: TextButton(
-              onPressed: () {},
+              onPressed: onPress,
               child: Text(
                 'Show all',
                 style: blackTextStyle.copyWith(

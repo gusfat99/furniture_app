@@ -154,6 +154,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                 price: item.price,
                 title: item.title,
                 isFav: false,
+                onTap: () {},
               ))
           .toList(),
     );
